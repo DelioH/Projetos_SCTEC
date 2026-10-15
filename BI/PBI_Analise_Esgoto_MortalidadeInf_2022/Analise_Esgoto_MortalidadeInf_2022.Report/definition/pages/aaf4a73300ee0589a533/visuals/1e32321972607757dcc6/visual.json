@@ -43,7 +43,7 @@
               },
               "queryRef": "D_MUNICIPIOS_2022.Município",
               "nativeQueryRef": "Município",
-              "active": true
+              "active": false
             }
           ]
         },
@@ -203,20 +203,7 @@
             "isPinned": true
           }
         ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'RR'"
-                  }
-                }
-              ],
-              "isToggled": true
-            }
-          ]
-        }
+        "root": {}
       }
     ],
     "drillFilterOtherVisuals": true
