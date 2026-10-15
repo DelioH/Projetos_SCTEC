@@ -1,6 +1,6 @@
-expression 'Erros em DADOS_MUNICIPIOS_2022' =
+expression 'Erros em F_ESGOTO_2022' =
 		let
-		Fonte = DADOS_MUNICIPIOS_2022,
+		Fonte = F_ESGOTO_2022,
 		  #"Incompatibilidades de Tipo Detectadas" = let
 		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Fonte, Table.ColumnsOfType(Fonte, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
 		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
@@ -10,12 +10,12 @@ expression 'Erros em DADOS_MUNICIPIOS_2022' =
 		in
 		    Table.TransformColumns(Fonte, pairs),
 		  #"Índice Adicionado" = Table.AddIndexColumn(#"Incompatibilidades de Tipo Detectadas", "Número da Linha" ,1),
-		  #"Erros Mantidos" = Table.SelectRowsWithErrors(#"Índice Adicionado", {"Código do IBGE", "Código do Município", "Município", "Estado"}),
-		  #"Colunas Reordenadas" = Table.ReorderColumns(#"Erros Mantidos", {"Número da Linha", "Código do IBGE", "Código do Município", "Município", "Estado"})
+		  #"Erros Mantidos" = Table.SelectRowsWithErrors(#"Índice Adicionado", {"Código do Município", "Município", "Estado", "IN015_AE - Índice de coleta de esgoto", "IN016_AE - Índice de tratamento de esgoto", "IN046_AE - Índice de esgoto tratado referido à água consumida"}),
+		  #"Colunas Reordenadas" = Table.ReorderColumns(#"Erros Mantidos", {"Número da Linha", "Código do Município", "Município", "Estado", "IN015_AE - Índice de coleta de esgoto", "IN016_AE - Índice de tratamento de esgoto", "IN046_AE - Índice de esgoto tratado referido à água consumida"})
 		in
 		  #"Colunas Reordenadas"
-	lineageTag: 3a22ad78-57a1-487f-b67e-65b827335f1d
-	queryGroup: 'Erros na Consulta - 14/10/2026 22:07:09'
+	lineageTag: 80dd4cf6-364d-49cb-8573-8c535132176a
+	queryGroup: 'Erros na Consulta - 14/10/2026 22:18:14'
 
 	annotation PBI_NavigationStepName = Navegação
 

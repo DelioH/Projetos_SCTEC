@@ -1,11 +1,11 @@
-table DADOS_ESGOTO_2022
+table F_ESGOTO_2022
 	lineageTag: 9cae8941-d47f-4037-ae06-3782aff818d5
 
 	column 'Código do Município'
 		dataType: int64
 		formatString: 0
 		lineageTag: 8bd6aaea-77d8-4eda-9f43-ef7cb4c2cf55
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Código do Município
 
 		annotation SummarizationSetBy = Automatic
@@ -56,16 +56,21 @@ table DADOS_ESGOTO_2022
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition DADOS_ESGOTO_2022 = m
+	partition F_ESGOTO_2022 = m
 		mode: import
 		source =
 				let
 				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Agua_Esgoto_ConsolidadoMunicipio-20261014214416.xlsx"), null, true),
 				    DADOS_ESGOTO_2022_Sheet = Fonte{[Item="DADOS_ESGOTO_2022",Kind="Sheet"]}[Data],
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_ESGOTO_2022_Sheet, [PromoteAllScalars=true]),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código do Município", Int64.Type}, {"Município", type text}, {"Estado", type text}, {"IN015_AE - Índice de coleta de esgoto", type number}, {"IN016_AE - Índice de tratamento de esgoto", type number}, {"IN046_AE - Índice de esgoto tratado referido à água consumida", type number}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código do Município", Int64.Type}, {"Município", type text}, {"Estado", type text}, {"IN015_AE - Índice de coleta de esgoto", type number}, {"IN016_AE - Índice de tratamento de esgoto", type number}, {"IN046_AE - Índice de esgoto tratado referido à água consumida", type number}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado",null,0,Replacer.ReplaceValue,{"IN015_AE - Índice de coleta de esgoto"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído",null,0,Replacer.ReplaceValue,{"IN016_AE - Índice de tratamento de esgoto"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1",null,0,Replacer.ReplaceValue,{"IN046_AE - Índice de esgoto tratado referido à água consumida"})
 				in
-				    #"Tipo Alterado"
+				    #"Valor Substituído2"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

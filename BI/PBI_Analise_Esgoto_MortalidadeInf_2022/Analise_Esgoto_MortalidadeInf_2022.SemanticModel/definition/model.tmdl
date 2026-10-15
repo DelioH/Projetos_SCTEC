@@ -7,21 +7,21 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-/// Erros nas consultas que foram carregadas em 14/10/2026 22:07:09.
-queryGroup 'Erros na Consulta - 14/10/2026 22:07:09'
+/// Erros nas consultas que foram carregadas em 14/10/2026 22:18:14.
+queryGroup 'Erros na Consulta - 14/10/2026 22:18:14'
 
 	annotation PBI_QueryGroupOrder = 0
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["DADOS_NASCIMENTOS_2022","DADOS_OBITOS_2022","DADOS_ESGOTO_2022","DADOS_MUNICIPIOS_2022","Erros em DADOS_MUNICIPIOS_2022"]
+annotation PBI_QueryOrder = ["F_NASCIMENTOS_2022","F_OBITOS_2022","F_ESGOTO_2022","D_MUNICIPIOS_2022","Erros em F_ESGOTO_2022"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table DADOS_NASCIMENTOS_2022
-ref table DADOS_OBITOS_2022
-ref table DADOS_ESGOTO_2022
-ref table DADOS_MUNICIPIOS_2022
+ref table F_NASCIMENTOS_2022
+ref table F_OBITOS_2022
+ref table F_ESGOTO_2022
+ref table D_MUNICIPIOS_2022
 
 ref cultureInfo pt-BR
 

@@ -1,4 +1,4 @@
-table DADOS_MUNICIPIOS_2022
+table D_MUNICIPIOS_2022
 	lineageTag: bb3eb635-5d60-4924-901c-209e7ffcc12f
 
 	column 'Código do IBGE'
@@ -14,7 +14,7 @@ table DADOS_MUNICIPIOS_2022
 		dataType: int64
 		formatString: 0
 		lineageTag: a623a329-0b4d-4d96-b880-671f94c49c70
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Código do Município
 
 		annotation SummarizationSetBy = Automatic
@@ -35,7 +35,7 @@ table DADOS_MUNICIPIOS_2022
 
 		annotation SummarizationSetBy = Automatic
 
-	partition DADOS_MUNICIPIOS_2022 = m
+	partition D_MUNICIPIOS_2022 = m
 		mode: import
 		source =
 				let
@@ -47,4 +47,6 @@ table DADOS_MUNICIPIOS_2022
 				    #"Tipo Alterado"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

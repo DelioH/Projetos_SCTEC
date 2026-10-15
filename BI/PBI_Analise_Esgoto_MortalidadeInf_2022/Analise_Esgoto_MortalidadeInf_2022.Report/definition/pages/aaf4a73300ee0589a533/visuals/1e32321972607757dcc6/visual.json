@@ -1,0 +1,351 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "1e32321972607757dcc6",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 882.67477203647411,
+    "width": 1833.9209726443769,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_MUNICIPIOS_2022"
+                    }
+                  },
+                  "Property": "Estado"
+                }
+              },
+              "queryRef": "D_MUNICIPIOS_2022.Estado",
+              "nativeQueryRef": "Estado",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_MUNICIPIOS_2022"
+                    }
+                  },
+                  "Property": "Município"
+                }
+              },
+              "queryRef": "D_MUNICIPIOS_2022.Município",
+              "nativeQueryRef": "Município",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_NASCIMENTOS_2022"
+                        }
+                      },
+                      "Property": "NASCIMENTOS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_NASCIMENTOS_2022.NASCIMENTOS)",
+              "nativeQueryRef": "NASCIMENTOS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_OBITOS_2022"
+                        }
+                      },
+                      "Property": "OBITOS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_OBITOS_2022.OBITOS)",
+              "nativeQueryRef": "Soma de OBITOS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_ESGOTO_2022"
+                        }
+                      },
+                      "Property": "IN015_AE - Índice de coleta de esgoto"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(F_ESGOTO_2022.IN015_AE - Índice de coleta de esgoto)",
+              "nativeQueryRef": "Média de IN015_AE - Índice de coleta de esgoto"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_ESGOTO_2022"
+                        }
+                      },
+                      "Property": "IN016_AE - Índice de tratamento de esgoto"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(F_ESGOTO_2022.IN016_AE - Índice de tratamento de esgoto)",
+              "nativeQueryRef": "Média de IN016_AE - Índice de tratamento de esgoto"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_ESGOTO_2022"
+                        }
+                      },
+                      "Property": "IN046_AE - Índice de esgoto tratado referido à água consumida"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(F_ESGOTO_2022.IN046_AE - Índice de esgoto tratado referido à água consumida)",
+              "nativeQueryRef": "Média de IN046_AE - Índice de esgoto tratado referido à água consumida"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "F_ESGOTO_2022"
+                      }
+                    },
+                    "Property": "IN015_AE - Índice de coleta de esgoto"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "D_MUNICIPIOS_2022.Estado"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_MUNICIPIOS_2022"
+                    }
+                  },
+                  "Property": "Estado"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "D_MUNICIPIOS_2022.Município"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'RR'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "729372d15ed968da5b22",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "D_MUNICIPIOS_2022"
+              }
+            },
+            "Property": "Estado"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2eb4ea46b582de793418",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "D_MUNICIPIOS_2022"
+              }
+            },
+            "Property": "Município"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "cf3e83cc696d3171f751",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_NASCIMENTOS_2022"
+                  }
+                },
+                "Property": "NASCIMENTOS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2bd839fc05a8ac1bc4a4",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_OBITOS_2022"
+                  }
+                },
+                "Property": "OBITOS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e0b0fac331bec93df42c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_ESGOTO_2022"
+                  }
+                },
+                "Property": "IN015_AE - Índice de coleta de esgoto"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7a452098746d153cd773",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_ESGOTO_2022"
+                  }
+                },
+                "Property": "IN016_AE - Índice de tratamento de esgoto"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fe573df5b70f62e37f7e",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_ESGOTO_2022"
+                  }
+                },
+                "Property": "IN046_AE - Índice de esgoto tratado referido à água consumida"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

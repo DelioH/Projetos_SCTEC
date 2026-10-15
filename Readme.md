@@ -46,6 +46,19 @@ Gerado o arquivo ConsolidadeMunicipio-202610144214416
 Verificado que haviam 2 códigos de municipio (codigo ibge e codigo de muncipio)
 Ao verificar os dados de mortalidade, verificado que ele utiliza o código do mounicipio.
 utilizado este.
+https://app4.cidades.gov.br/serieHistorica/#
+
+Utilizada a listagem de municipios da taebela d eesgoto, pois possuía codigo ibge, codigo municipio e estado.
+Carregados os arquivos no Power BI para organizar os dados e fazer ETL.
+Craido o arquivo Analise_Esgoto_MortalidadeInf_2022
+ok-Ajsutadas as tabelas fato (F_) e dimensão (D_)
+ok-Ajsutados relacionaemtnos.
+se esgoto está em branco = 0
+Criação dos indicadores
+pegar os dados de origem do esgoto?
+
+
+
 
 
 

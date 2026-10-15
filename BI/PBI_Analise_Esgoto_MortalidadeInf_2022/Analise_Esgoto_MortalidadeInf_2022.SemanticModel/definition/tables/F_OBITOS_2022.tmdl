@@ -1,11 +1,11 @@
-table DADOS_OBITOS_2022
+table F_OBITOS_2022
 	lineageTag: 6eb3367d-bd61-4666-a722-41acbdc3d79a
 
 	column COD_MUNICIPIO
 		dataType: int64
 		formatString: 0
 		lineageTag: c087ff08-f975-4153-8231-0b7abaf4eb1f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: COD_MUNICIPIO
 
 		annotation SummarizationSetBy = Automatic
@@ -27,7 +27,7 @@ table DADOS_OBITOS_2022
 
 		annotation SummarizationSetBy = Automatic
 
-	partition DADOS_OBITOS_2022 = m
+	partition F_OBITOS_2022 = m
 		mode: import
 		source =
 				let
@@ -37,6 +37,8 @@ table DADOS_OBITOS_2022
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"COD_MUNICIPIO", Int64.Type}, {"MUNICIPIO", type text}, {"OBITOS", Int64.Type}})
 				in
 				    #"Tipo Alterado"
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 
