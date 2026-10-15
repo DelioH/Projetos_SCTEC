@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Analise_Esgoto_MortalidadeInf_2022"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "01ef190b-97b2-4e55-b6c5-0474b59868e0"
+  }
+}

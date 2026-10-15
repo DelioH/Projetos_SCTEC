@@ -1,0 +1,71 @@
+table DADOS_ESGOTO_2022
+	lineageTag: 9cae8941-d47f-4037-ae06-3782aff818d5
+
+	column 'Código do Município'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bd6aaea-77d8-4eda-9f43-ef7cb4c2cf55
+		summarizeBy: sum
+		sourceColumn: Código do Município
+
+		annotation SummarizationSetBy = Automatic
+
+	column Município
+		dataType: string
+		lineageTag: ecbbeb09-682e-4519-8b6c-9bd6ad5f894d
+		summarizeBy: none
+		sourceColumn: Município
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: b5ce82f2-8ce4-40fe-b164-0dd6c4dfa4c2
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IN015_AE - Índice de coleta de esgoto'
+		dataType: double
+		lineageTag: d13c2a11-095d-455a-b153-a8d0e7b73a58
+		summarizeBy: sum
+		sourceColumn: IN015_AE - Índice de coleta de esgoto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'IN016_AE - Índice de tratamento de esgoto'
+		dataType: double
+		lineageTag: a9ca3eee-ccb4-45fd-9063-942ec9789fbe
+		summarizeBy: sum
+		sourceColumn: IN016_AE - Índice de tratamento de esgoto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'IN046_AE - Índice de esgoto tratado referido à água consumida'
+		dataType: double
+		lineageTag: 656fe7a3-50c5-4cab-a3b4-c3fbc588df5e
+		summarizeBy: sum
+		sourceColumn: IN046_AE - Índice de esgoto tratado referido à água consumida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DADOS_ESGOTO_2022 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Agua_Esgoto_ConsolidadoMunicipio-20261014214416.xlsx"), null, true),
+				    DADOS_ESGOTO_2022_Sheet = Fonte{[Item="DADOS_ESGOTO_2022",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_ESGOTO_2022_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código do Município", Int64.Type}, {"Município", type text}, {"Estado", type text}, {"IN015_AE - Índice de coleta de esgoto", type number}, {"IN016_AE - Índice de tratamento de esgoto", type number}, {"IN046_AE - Índice de esgoto tratado referido à água consumida", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,42 @@
+table DADOS_OBITOS_2022
+	lineageTag: 6eb3367d-bd61-4666-a722-41acbdc3d79a
+
+	column COD_MUNICIPIO
+		dataType: int64
+		formatString: 0
+		lineageTag: c087ff08-f975-4153-8231-0b7abaf4eb1f
+		summarizeBy: sum
+		sourceColumn: COD_MUNICIPIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column MUNICIPIO
+		dataType: string
+		lineageTag: f3b45407-e68f-4cb3-8a5e-2277a3c9292e
+		summarizeBy: none
+		sourceColumn: MUNICIPIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBITOS
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d0226c5-509a-4382-9872-b0fc345705e8
+		summarizeBy: sum
+		sourceColumn: OBITOS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DADOS_OBITOS_2022 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Mortalidade Infantil BR 2016-2026.xlsx"), null, true),
+				    DADOS_OBITOS_2022_Sheet = Fonte{[Item="DADOS_OBITOS_2022",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_OBITOS_2022_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"COD_MUNICIPIO", Int64.Type}, {"MUNICIPIO", type text}, {"OBITOS", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

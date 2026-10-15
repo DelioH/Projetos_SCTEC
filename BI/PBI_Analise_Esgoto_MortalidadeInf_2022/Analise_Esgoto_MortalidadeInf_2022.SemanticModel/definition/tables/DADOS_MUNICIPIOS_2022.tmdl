@@ -1,0 +1,50 @@
+table DADOS_MUNICIPIOS_2022
+	lineageTag: bb3eb635-5d60-4924-901c-209e7ffcc12f
+
+	column 'Código do IBGE'
+		dataType: int64
+		formatString: 0
+		lineageTag: e7c84e31-1175-4bc7-80b2-9d30875127af
+		summarizeBy: sum
+		sourceColumn: Código do IBGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código do Município'
+		dataType: int64
+		formatString: 0
+		lineageTag: a623a329-0b4d-4d96-b880-671f94c49c70
+		summarizeBy: sum
+		sourceColumn: Código do Município
+
+		annotation SummarizationSetBy = Automatic
+
+	column Município
+		dataType: string
+		lineageTag: 0156632f-befd-4e8f-8f4c-a4588fe952c7
+		summarizeBy: none
+		sourceColumn: Município
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: 17d4597d-9f5e-47a6-88ec-15efcfd50789
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DADOS_MUNICIPIOS_2022 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Agua_Esgoto_ConsolidadoMunicipio-20261014214416.xlsx"), null, true),
+				    DADOS_MUNICIPIOS_2022_Sheet = Fonte{[Item="DADOS_MUNICIPIOS_2022",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_MUNICIPIOS_2022_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código do IBGE", Int64.Type}, {"Código do Município", Int64.Type}, {"Município", type text}, {"Estado", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
