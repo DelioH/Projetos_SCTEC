@@ -29,6 +29,24 @@ IN016
 IN046
 ![alt text](image-3.png)
 
+Para elaboração do relatorios (extração dos dados), foram utilizados os seguintes filtros
+![alt text](image-7.png)
+
+
+E as seguintes colunas:
+Famílias de informações e indicadores
+![alt text](image-4.png)
+![alt text](image-5.png)
+Informações e Indicadores = todos
+![alt text](image-6.png)
+
+Ano de referencia: 2022
+Foram gerados alguns filtros.
+Gerado o arquivo ConsolidadeMunicipio-202610144214416
+Verificado que haviam 2 códigos de municipio (codigo ibge e codigo de muncipio)
+Ao verificar os dados de mortalidade, verificado que ele utiliza o código do mounicipio.
+utilizado este.
+
 
 
 
