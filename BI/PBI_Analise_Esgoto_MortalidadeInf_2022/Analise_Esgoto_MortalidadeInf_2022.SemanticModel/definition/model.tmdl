@@ -14,7 +14,7 @@ queryGroup 'Erros na Consulta - 14/10/2026 22:18:14'
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["F_NASCIMENTOS_2022","F_OBITOS_2022","F_ESGOTO_2022","D_MUNICIPIOS_2022","Erros em F_ESGOTO_2022"]
+annotation PBI_QueryOrder = ["F_NASCIMENTOS_2022","F_OBITOS_2022","F_ESGOTO_2022","D_MUNICIPIOS_2022","Erros em F_ESGOTO_2022","MEDIDAS"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -22,6 +22,7 @@ ref table F_NASCIMENTOS_2022
 ref table F_OBITOS_2022
 ref table F_ESGOTO_2022
 ref table D_MUNICIPIOS_2022
+ref table MEDIDAS
 
 ref cultureInfo pt-BR
 

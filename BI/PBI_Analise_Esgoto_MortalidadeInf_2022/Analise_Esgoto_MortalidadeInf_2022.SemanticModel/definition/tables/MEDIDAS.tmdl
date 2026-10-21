@@ -1,0 +1,25 @@
+table MEDIDAS
+	lineageTag: 175a0994-9875-4f4a-9847-fd25568e6949
+
+	measure IndiceColetaEsgoto = AVERAGE(F_ESGOTO_2022[IN015_AE - Índice de coleta de esgoto])
+		lineageTag: 4438d2fe-c437-4083-8cc8-a8f96e886acf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure IndiceTratamentoEsgoto = AVERAGE(F_ESGOTO_2022[IN016_AE - Índice de tratamento de esgoto])
+		lineageTag: 659c66d8-e358-4506-9bdf-b6af901d109a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MEDIDAS = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+
