@@ -22,6 +22,22 @@ Utilizada a tabela LEP_Indicadores
 
 IN015
 ![alt text](image-1.png)
+Este será utilizado e é composto pela seguinte fórmula:
+(ES005 / AG010 - AG019) * 100
+sendo:
+
+AG010 - Volume de água consumido (1.000 m3/ano)	
+AG019 - Volume de água tratada exportado (1.000 m3/ano)		
+ES005 - Volume de esgotos coletado (1.000 m3/ano)	
+IN015 - Índice de coleta de esgoto (%)
+
+Por precaução foi refeito o calculo
+
+Foram verificados 2 registros em branco e 4 com 0 (indicador IN015)
+Foi identificado que os registros em branco corrrespondiam 
+Foi identificado qeu os regisros em branco e os registros 0 foram ocasionados pela mesma situação
+Ou o cálculo do indice ficou igual a 0, ou o calculo ficou negativo (caso em que a cidade exportava mais agua do que consumia)
+Foi convencionado que em todos esses casos, assumiríamos o valor do índice como 0.
 
 IN016
 ![alt text](image-2.png)
@@ -29,16 +45,20 @@ IN016
 IN046
 ![alt text](image-3.png)
 
-Para elaboração do relatorios (extração dos dados), foram utilizados os seguintes filtros
+Obsoleto - Para elaboração do relatorios (extração dos dados), foram utilizados os seguintes filtros
 ![alt text](image-7.png)
 
 
-E as seguintes colunas:
-Famílias de informações e indicadores
+Obsoleto - E as seguintes colunas:
+Obsoleto - Famílias de informações e indicadores
 ![alt text](image-4.png)
 ![alt text](image-5.png)
-Informações e Indicadores = todos
+Obsoleto - Informações e Indicadores = todos
 ![alt text](image-6.png)
+
+Filtro 1
+![alt text](image-8.png)
+
 
 Ano de referencia: 2022
 Foram gerados alguns filtros.
@@ -56,6 +76,8 @@ ok-Ajsutados relacionaemtnos.
 se esgoto está em branco = 0
 Criação dos indicadores
 pegar os dados de origem do esgoto?
+
+
 
 
 

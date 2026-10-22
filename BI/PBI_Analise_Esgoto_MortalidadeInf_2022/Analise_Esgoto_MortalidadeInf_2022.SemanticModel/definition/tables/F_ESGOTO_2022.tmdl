@@ -2,55 +2,104 @@ table F_ESGOTO_2022
 	lineageTag: 9cae8941-d47f-4037-ae06-3782aff818d5
 
 	column 'Código do Município'
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 8bd6aaea-77d8-4eda-9f43-ef7cb4c2cf55
 		summarizeBy: none
 		sourceColumn: Código do Município
 
 		annotation SummarizationSetBy = Automatic
 
-	column Município
+	column 'Ano de Referência'
 		dataType: string
-		lineageTag: ecbbeb09-682e-4519-8b6c-9bd6ad5f894d
+		lineageTag: 651ce768-1240-4211-bac8-eac50c8918d5
 		summarizeBy: none
-		sourceColumn: Município
+		sourceColumn: Ano de Referência
 
 		annotation SummarizationSetBy = Automatic
 
-	column Estado
+	column 'Código do Prestador'
 		dataType: string
-		lineageTag: b5ce82f2-8ce4-40fe-b164-0dd6c4dfa4c2
+		lineageTag: 075112c7-d7ce-4b74-bd27-489974be7827
 		summarizeBy: none
-		sourceColumn: Estado
+		sourceColumn: Código do Prestador
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'IN015_AE - Índice de coleta de esgoto'
+	column Prestador
+		dataType: string
+		lineageTag: 36599e76-6ec5-4203-9c4a-3620873e37a0
+		summarizeBy: none
+		sourceColumn: Prestador
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sigla do Prestador'
+		dataType: string
+		lineageTag: c3949f8f-fe6c-47e3-9ec8-4321a1303e70
+		summarizeBy: none
+		sourceColumn: Sigla do Prestador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Abrangência
+		dataType: string
+		lineageTag: 47ea2b0c-c24f-408d-a6d8-6ec61ed4cbd3
+		summarizeBy: none
+		sourceColumn: Abrangência
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de serviço'
+		dataType: string
+		lineageTag: 5443838f-e8dc-4f01-97a2-bb3e555e8187
+		summarizeBy: none
+		sourceColumn: Tipo de serviço
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Natureza jurídica'
+		dataType: string
+		lineageTag: 08b0bb47-50eb-4d62-aa36-53c381ebb310
+		summarizeBy: none
+		sourceColumn: Natureza jurídica
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AG010 - Volume de água consumido'
 		dataType: double
-		lineageTag: d13c2a11-095d-455a-b153-a8d0e7b73a58
+		lineageTag: 630ba937-e0cf-4281-9cfe-06860951e0e1
 		summarizeBy: sum
-		sourceColumn: IN015_AE - Índice de coleta de esgoto
+		sourceColumn: AG010 - Volume de água consumido
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column 'IN016_AE - Índice de tratamento de esgoto'
+	column 'AG019 - Volume de água tratada exportado'
 		dataType: double
-		lineageTag: a9ca3eee-ccb4-45fd-9063-942ec9789fbe
+		lineageTag: 5da3c353-afa6-431e-9c12-da0fce7b4bac
 		summarizeBy: sum
-		sourceColumn: IN016_AE - Índice de tratamento de esgoto
+		sourceColumn: AG019 - Volume de água tratada exportado
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column 'IN046_AE - Índice de esgoto tratado referido à água consumida'
+	column 'ES005 - Volume de esgotos coletado'
 		dataType: double
-		lineageTag: 656fe7a3-50c5-4cab-a3b4-c3fbc588df5e
+		lineageTag: b2c8904e-2b5a-4a3c-ad62-dba2706b7452
 		summarizeBy: sum
-		sourceColumn: IN046_AE - Índice de esgoto tratado referido à água consumida
+		sourceColumn: ES005 - Volume de esgotos coletado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'IN015 - Índice de coleta de esgoto'
+		dataType: double
+		lineageTag: e86dcac7-eb46-4f09-b6f7-12af4049fe66
+		summarizeBy: sum
+		sourceColumn: IN015 - Índice de coleta de esgoto
 
 		annotation SummarizationSetBy = Automatic
 
@@ -60,15 +109,14 @@ table F_ESGOTO_2022
 		mode: import
 		source =
 				let
-				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Agua_Esgoto_ConsolidadoMunicipio-20261014214416.xlsx"), null, true),
+				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Agua_Esgoto_2022.xlsx"), null, true),
 				    DADOS_ESGOTO_2022_Sheet = Fonte{[Item="DADOS_ESGOTO_2022",Kind="Sheet"]}[Data],
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_ESGOTO_2022_Sheet, [PromoteAllScalars=true]),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código do Município", Int64.Type}, {"Município", type text}, {"Estado", type text}, {"IN015_AE - Índice de coleta de esgoto", type number}, {"IN016_AE - Índice de tratamento de esgoto", type number}, {"IN046_AE - Índice de esgoto tratado referido à água consumida", type number}}),
-				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado",null,0,Replacer.ReplaceValue,{"IN015_AE - Índice de coleta de esgoto"}),
-				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído",null,0,Replacer.ReplaceValue,{"IN016_AE - Índice de tratamento de esgoto"}),
-				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1",null,0,Replacer.ReplaceValue,{"IN046_AE - Índice de esgoto tratado referido à água consumida"})
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Cabeçalhos Promovidos",{"Município", "Estado"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Removidas",{{"Código do Prestador", type text}, {"Ano de Referência", type text}, {"Código do Município", type text}, {"Sigla do Prestador", type text}, {"Abrangência", type text}, {"Tipo de serviço", type text}, {"Natureza jurídica", type text}, {"AG010 - Volume de água consumido", type number}, {"AG019 - Volume de água tratada exportado", type number}, {"ES005 - Volume de esgotos coletado", type number}, {"IN015 - Índice de coleta de esgoto", type number}, {"Prestador", type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado",null,0,Replacer.ReplaceValue,{"IN015 - Índice de coleta de esgoto"})
 				in
-				    #"Valor Substituído2"
+				    #"Valor Substituído"
 
 	annotation PBI_ResultType = Table
 

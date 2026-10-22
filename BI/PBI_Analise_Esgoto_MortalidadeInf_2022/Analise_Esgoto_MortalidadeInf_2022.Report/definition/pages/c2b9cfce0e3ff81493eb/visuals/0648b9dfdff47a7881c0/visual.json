@@ -42,11 +42,11 @@
                       "Entity": "MEDIDAS"
                     }
                   },
-                  "Property": "IndiceTratamentoEsgoto"
+                  "Property": "IndiceColetaEsgoto[IN015]"
                 }
               },
-              "queryRef": "MEDIDAS.IndiceTratamentoEsgoto",
-              "nativeQueryRef": "IndiceTratamentoEsgoto",
+              "queryRef": "MEDIDAS.IndiceColetaEsgoto[IN015]",
+              "nativeQueryRef": "IndiceColetaEsgoto[IN015]",
               "active": true
             }
           ]
@@ -90,20 +90,6 @@
         "type": "Categorical"
       },
       {
-        "name": "025eb7d3e13a06143037",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "MEDIDAS"
-              }
-            },
-            "Property": "IndiceTratamentoEsgoto"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "0ce655fee79312966d2a",
         "field": {
           "Measure": {
@@ -113,6 +99,20 @@
               }
             },
             "Property": "MortalidadeInfantil"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8abbcae3c7fa8f1bdece",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MEDIDAS"
+              }
+            },
+            "Property": "IndiceColetaEsgoto[IN015]"
           }
         },
         "type": "Advanced"
