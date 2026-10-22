@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0648b9dfdff47a7881c0",
+  "position": {
+    "x": 9.4117647058823533,
+    "y": 40.7843137254902,
+    "z": 0,
+    "height": 815.686274509804,
+    "width": 1716.0784313725492,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_MUNICIPIOS_2022"
+                    }
+                  },
+                  "Property": "Município"
+                }
+              },
+              "queryRef": "D_MUNICIPIOS_2022.Município",
+              "nativeQueryRef": "Município",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MEDIDAS"
+                    }
+                  },
+                  "Property": "IndiceTratamentoEsgoto"
+                }
+              },
+              "queryRef": "MEDIDAS.IndiceTratamentoEsgoto",
+              "nativeQueryRef": "IndiceTratamentoEsgoto",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MEDIDAS"
+                    }
+                  },
+                  "Property": "MortalidadeInfantil"
+                }
+              },
+              "queryRef": "MEDIDAS.MortalidadeInfantil",
+              "nativeQueryRef": "MortalidadeInfantil"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c73520a07e7bf2f8b5b3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "D_MUNICIPIOS_2022"
+              }
+            },
+            "Property": "Município"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "025eb7d3e13a06143037",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MEDIDAS"
+              }
+            },
+            "Property": "IndiceTratamentoEsgoto"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0ce655fee79312966d2a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MEDIDAS"
+              }
+            },
+            "Property": "MortalidadeInfantil"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

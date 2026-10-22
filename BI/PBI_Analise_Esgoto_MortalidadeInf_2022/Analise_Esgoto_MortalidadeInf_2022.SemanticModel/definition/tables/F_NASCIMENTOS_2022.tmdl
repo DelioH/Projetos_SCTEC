@@ -38,7 +38,7 @@ table F_NASCIMENTOS_2022
 				in
 				    #"Tipo Alterado"
 
-	changedProperty = Name
-
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

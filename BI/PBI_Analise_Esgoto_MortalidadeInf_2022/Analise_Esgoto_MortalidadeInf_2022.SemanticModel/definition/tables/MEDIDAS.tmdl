@@ -1,13 +1,26 @@
 table MEDIDAS
 	lineageTag: 175a0994-9875-4f4a-9847-fd25568e6949
 
-	measure IndiceColetaEsgoto = AVERAGE(F_ESGOTO_2022[IN015_AE - Índice de coleta de esgoto])
+	measure IndiceColetaEsgoto[IN015] = AVERAGE(F_ESGOTO_2022[IN015_AE - Índice de coleta de esgoto])
 		lineageTag: 4438d2fe-c437-4083-8cc8-a8f96e886acf
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure IndiceTratamentoEsgoto = AVERAGE(F_ESGOTO_2022[IN016_AE - Índice de tratamento de esgoto])
 		lineageTag: 659c66d8-e358-4506-9bdf-b6af901d109a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure _ObitosInfantis = SUM(F_OBITOS_2022[OBITOS])
+		formatString: 0
+		lineageTag: 0f481600-6d14-48db-a578-b9d05ab2cc4d
+
+	measure _Nascimentos = SUM(F_NASCIMENTOS_2022[NASCIMENTOS])
+		formatString: 0
+		lineageTag: 331497b1-80bc-4cf5-b53d-86f531b13d7e
+
+	measure MortalidadeInfantil = DIVIDE([_ObitosInfantis], [_Nascimentos])*1000
+		lineageTag: 08c6b2ae-62a9-4d07-9011-0e755eb173b0
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

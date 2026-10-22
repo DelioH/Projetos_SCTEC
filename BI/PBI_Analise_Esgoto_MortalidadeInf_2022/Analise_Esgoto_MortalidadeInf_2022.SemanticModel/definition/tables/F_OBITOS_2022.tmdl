@@ -38,7 +38,5 @@ table F_OBITOS_2022
 				in
 				    #"Tipo Alterado"
 
-	changedProperty = Name
-
 	annotation PBI_ResultType = Table
 

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "1e32321972607757dcc6",
   "position": {
     "x": 0,
@@ -43,7 +43,7 @@
               },
               "queryRef": "D_MUNICIPIOS_2022.Município",
               "nativeQueryRef": "Município",
-              "active": false
+              "active": true
             }
           ]
         },
@@ -51,98 +51,59 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "F_NASCIMENTOS_2022"
-                        }
-                      },
-                      "Property": "NASCIMENTOS"
+                    "SourceRef": {
+                      "Entity": "MEDIDAS"
                     }
                   },
-                  "Function": 0
+                  "Property": "_Nascimentos"
                 }
               },
-              "queryRef": "Sum(F_NASCIMENTOS_2022.NASCIMENTOS)",
-              "nativeQueryRef": "NASCIMENTOS"
+              "queryRef": "MEDIDAS._Nascimentos",
+              "nativeQueryRef": "_Nascimentos"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "F_OBITOS_2022"
-                        }
-                      },
-                      "Property": "OBITOS"
+                    "SourceRef": {
+                      "Entity": "MEDIDAS"
                     }
                   },
-                  "Function": 0
+                  "Property": "_ObitosInfantis"
                 }
               },
-              "queryRef": "Sum(F_OBITOS_2022.OBITOS)",
-              "nativeQueryRef": "Soma de OBITOS"
+              "queryRef": "MEDIDAS._ObitosInfantis",
+              "nativeQueryRef": "_ObitosInfantis"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "F_ESGOTO_2022"
-                        }
-                      },
-                      "Property": "IN015_AE - Índice de coleta de esgoto"
+                    "SourceRef": {
+                      "Entity": "MEDIDAS"
                     }
                   },
-                  "Function": 1
+                  "Property": "MortalidadeInfantil"
                 }
               },
-              "queryRef": "Sum(F_ESGOTO_2022.IN015_AE - Índice de coleta de esgoto)",
-              "nativeQueryRef": "Média de IN015_AE - Índice de coleta de esgoto"
+              "queryRef": "MEDIDAS.MortalidadeInfantil",
+              "nativeQueryRef": "MortalidadeInfantil"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "F_ESGOTO_2022"
-                        }
-                      },
-                      "Property": "IN016_AE - Índice de tratamento de esgoto"
+                    "SourceRef": {
+                      "Entity": "MEDIDAS"
                     }
                   },
-                  "Function": 1
+                  "Property": "IndiceColetaEsgoto[IN015]"
                 }
               },
-              "queryRef": "Sum(F_ESGOTO_2022.IN016_AE - Índice de tratamento de esgoto)",
-              "nativeQueryRef": "Média de IN016_AE - Índice de tratamento de esgoto"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "F_ESGOTO_2022"
-                        }
-                      },
-                      "Property": "IN046_AE - Índice de esgoto tratado referido à água consumida"
-                    }
-                  },
-                  "Function": 1
-                }
-              },
-              "queryRef": "Sum(F_ESGOTO_2022.IN046_AE - Índice de esgoto tratado referido à água consumida)",
-              "nativeQueryRef": "Média de IN046_AE - Índice de esgoto tratado referido à água consumida"
+              "queryRef": "MEDIDAS.IndiceColetaEsgoto[IN015]",
+              "nativeQueryRef": "IndiceColetaEsgoto[IN015]"
             }
           ]
         }
@@ -151,18 +112,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "F_ESGOTO_2022"
-                      }
-                    },
-                    "Property": "IN015_AE - Índice de coleta de esgoto"
+                  "SourceRef": {
+                    "Entity": "MEDIDAS"
                   }
                 },
-                "Function": 1
+                "Property": "MortalidadeInfantil"
               }
             },
             "direction": "Descending"
@@ -203,7 +159,50 @@
             "isPinned": true
           }
         ],
-        "root": {}
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'DF'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'AC'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'AP'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'MA'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
       }
     ],
     "drillFilterOtherVisuals": true
@@ -239,96 +238,57 @@
         "type": "Categorical"
       },
       {
-        "name": "cf3e83cc696d3171f751",
+        "name": "99cc2c184981eedddcc8",
         "field": {
-          "Aggregation": {
+          "Measure": {
             "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "F_NASCIMENTOS_2022"
-                  }
-                },
-                "Property": "NASCIMENTOS"
+              "SourceRef": {
+                "Entity": "MEDIDAS"
               }
             },
-            "Function": 0
+            "Property": "_Nascimentos"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "2bd839fc05a8ac1bc4a4",
+        "name": "557b4542b63e3acab2a6",
         "field": {
-          "Aggregation": {
+          "Measure": {
             "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "F_OBITOS_2022"
-                  }
-                },
-                "Property": "OBITOS"
+              "SourceRef": {
+                "Entity": "MEDIDAS"
               }
             },
-            "Function": 0
+            "Property": "_ObitosInfantis"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "e0b0fac331bec93df42c",
+        "name": "f489c35183c045b56b6e",
         "field": {
-          "Aggregation": {
+          "Measure": {
             "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "F_ESGOTO_2022"
-                  }
-                },
-                "Property": "IN015_AE - Índice de coleta de esgoto"
+              "SourceRef": {
+                "Entity": "MEDIDAS"
               }
             },
-            "Function": 1
+            "Property": "MortalidadeInfantil"
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "7a452098746d153cd773",
+        "name": "20ca6fb56ebda352bb23",
         "field": {
-          "Aggregation": {
+          "Measure": {
             "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "F_ESGOTO_2022"
-                  }
-                },
-                "Property": "IN016_AE - Índice de tratamento de esgoto"
+              "SourceRef": {
+                "Entity": "MEDIDAS"
               }
             },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "fe573df5b70f62e37f7e",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "F_ESGOTO_2022"
-                  }
-                },
-                "Property": "IN046_AE - Índice de esgoto tratado referido à água consumida"
-              }
-            },
-            "Function": 1
+            "Property": "IndiceColetaEsgoto[IN015]"
           }
         },
         "type": "Advanced"
