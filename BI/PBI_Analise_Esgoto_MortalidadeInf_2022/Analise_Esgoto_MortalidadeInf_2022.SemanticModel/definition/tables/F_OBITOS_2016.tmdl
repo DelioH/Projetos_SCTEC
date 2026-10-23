@@ -1,0 +1,58 @@
+table F_OBITOS_2016
+	lineageTag: 7a338813-c7b3-4143-b1c5-3fa24002f45b
+
+	column COD_MUNICIPIO
+		dataType: int64
+		formatString: 0
+		lineageTag: 07d06f2f-3d2e-40c2-81a1-8ac597250fdc
+		summarizeBy: sum
+		sourceColumn: COD_MUNICIPIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column MUNICIPIO
+		dataType: string
+		lineageTag: 95108f11-af6c-49c7-ba1a-78149148de52
+		summarizeBy: none
+		sourceColumn: MUNICIPIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANO
+		dataType: int64
+		formatString: 0
+		lineageTag: 3709d272-4cf1-4af7-9a0c-5d7b850c1ef8
+		summarizeBy: sum
+		sourceColumn: ANO
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBITOS
+		dataType: int64
+		formatString: 0
+		lineageTag: 2adcae22-0b01-4478-b565-c3c46f3f2ea9
+		summarizeBy: sum
+		sourceColumn: OBITOS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_OBITOS_2016 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Mortalidade Infantil BR 2016-2026.xlsx"), null, true),
+				    DADOS_OBITOS_2022_Sheet = Fonte{[Item="DADOS_OBITOS",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_OBITOS_2022_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"COD_MUNICIPIO", Int64.Type}, {"MUNICIPIO", type text}, {"2016", Int64.Type}, {"2017", Int64.Type}, {"2018", Int64.Type}, {"2019", Int64.Type}, {"2020", Int64.Type}, {"2021", Int64.Type}, {"2022", Int64.Type}, {"2023", Int64.Type}, {"2024", Int64.Type}, {"2025", Int64.Type}, {"2026", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"2022", "2023", "2024", "2025", "2026", "2021", "2020", "2019", "2018", "2017"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Removidas",{{"2016", "OBITOS"}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "ANO", each 2016),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"ANO", Int64.Type}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado1",{"COD_MUNICIPIO", "MUNICIPIO", "ANO", "OBITOS"})
+				in
+				    #"Colunas Reordenadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

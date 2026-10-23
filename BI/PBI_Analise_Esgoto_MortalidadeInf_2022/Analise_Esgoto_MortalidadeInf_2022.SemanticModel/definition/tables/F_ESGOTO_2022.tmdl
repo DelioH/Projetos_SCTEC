@@ -105,6 +105,14 @@ table F_ESGOTO_2022
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Column15
+		dataType: string
+		lineageTag: 36a83722-aafa-450b-8f53-1da657b5f470
+		summarizeBy: none
+		sourceColumn: Column15
+
+		annotation SummarizationSetBy = Automatic
+
 	partition F_ESGOTO_2022 = m
 		mode: import
 		source =

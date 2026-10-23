@@ -23,11 +23,11 @@
                       "Entity": "D_MUNICIPIOS_2022"
                     }
                   },
-                  "Property": "Estado"
+                  "Property": "Município"
                 }
               },
-              "queryRef": "D_MUNICIPIOS_2022.Estado",
-              "nativeQueryRef": "Estado",
+              "queryRef": "D_MUNICIPIOS_2022.Município",
+              "nativeQueryRef": "Município",
               "active": true
             },
             {
@@ -38,12 +38,12 @@
                       "Entity": "D_MUNICIPIOS_2022"
                     }
                   },
-                  "Property": "Município"
+                  "Property": "Estado"
                 }
               },
-              "queryRef": "D_MUNICIPIOS_2022.Município",
-              "nativeQueryRef": "Município",
-              "active": true
+              "queryRef": "D_MUNICIPIOS_2022.Estado",
+              "nativeQueryRef": "Estado",
+              "active": false
             }
           ]
         },
@@ -134,6 +134,13 @@
         "levels": [
           {
             "queryRefs": [
+              "D_MUNICIPIOS_2022.Município"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
               "D_MUNICIPIOS_2022.Estado"
             ],
             "isCollapsed": true,
@@ -150,79 +157,15 @@
               }
             ],
             "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "D_MUNICIPIOS_2022.Município"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
           }
         ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'DF'"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'AC'"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'AP'"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'MA'"
-                  }
-                }
-              ],
-              "isToggled": true
-            }
-          ]
-        }
+        "root": {}
       }
     ],
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "729372d15ed968da5b22",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "D_MUNICIPIOS_2022"
-              }
-            },
-            "Property": "Estado"
-          }
-        },
-        "type": "Categorical"
-      },
       {
         "name": "2eb4ea46b582de793418",
         "field": {
@@ -292,6 +235,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "93ca63bbc8e8073da47d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "D_MUNICIPIOS_2022"
+              }
+            },
+            "Property": "Estado"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

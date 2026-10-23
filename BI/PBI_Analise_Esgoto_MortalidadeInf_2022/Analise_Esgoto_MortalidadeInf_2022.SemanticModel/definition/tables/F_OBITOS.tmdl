@@ -1,4 +1,4 @@
-table F_OBITOS_2022
+table F_OBITOS
 	lineageTag: 6eb3367d-bd61-4666-a722-41acbdc3d79a
 
 	column COD_MUNICIPIO
@@ -27,16 +27,31 @@ table F_OBITOS_2022
 
 		annotation SummarizationSetBy = Automatic
 
-	partition F_OBITOS_2022 = m
+	column ANO
+		dataType: int64
+		formatString: 0
+		lineageTag: 505a3199-798f-43af-8aa1-7d2bfb36187d
+		summarizeBy: sum
+		sourceColumn: ANO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_OBITOS = m
 		mode: import
 		source =
 				let
 				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Mortalidade Infantil BR 2016-2026.xlsx"), null, true),
 				    DADOS_OBITOS_2022_Sheet = Fonte{[Item="DADOS_OBITOS_2022",Kind="Sheet"]}[Data],
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_OBITOS_2022_Sheet, [PromoteAllScalars=true]),
-				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"COD_MUNICIPIO", Int64.Type}, {"MUNICIPIO", type text}, {"OBITOS", Int64.Type}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"COD_MUNICIPIO", Int64.Type}, {"MUNICIPIO", type text}, {"OBITOS", Int64.Type}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "ANO", each 2022),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"ANO", Int64.Type}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado1",{"COD_MUNICIPIO", "MUNICIPIO", "ANO", "OBITOS"}),
+				    #"Consulta Acrescentada" = Table.Combine({#"Colunas Reordenadas", F_OBITOS_2021, F_OBITOS_2020, F_OBITOS_2019, F_OBITOS_2018, F_OBITOS_2017, F_OBITOS_2016})
 				in
-				    #"Tipo Alterado"
+				    #"Consulta Acrescentada"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
 

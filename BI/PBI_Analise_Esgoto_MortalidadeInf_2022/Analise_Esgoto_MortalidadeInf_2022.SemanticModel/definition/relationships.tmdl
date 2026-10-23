@@ -3,10 +3,10 @@ relationship 385a553d-9ee8-b3a7-ae35-026825d01541
 	toColumn: D_MUNICIPIOS_2022.'Código do Município'
 
 relationship 3de72d03-f2c4-02b4-7636-18eb00d896c8
-	fromColumn: F_NASCIMENTOS_2022.COD_MUNICIPIO
+	fromColumn: F_NASCIMENTOS.COD_MUNICIPIO
 	toColumn: D_MUNICIPIOS_2022.'Código do Município'
 
 relationship e56495f3-0b64-feca-86bc-bc378a7f5fab
-	fromColumn: F_OBITOS_2022.COD_MUNICIPIO
+	fromColumn: F_OBITOS.COD_MUNICIPIO
 	toColumn: D_MUNICIPIOS_2022.'Código do Município'
 

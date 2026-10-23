@@ -6,11 +6,11 @@ table MEDIDAS
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure _ObitosInfantis = SUM(F_OBITOS_2022[OBITOS])
+	measure _ObitosInfantis = SUM(F_OBITOS[OBITOS])
 		formatString: 0
 		lineageTag: 0f481600-6d14-48db-a578-b9d05ab2cc4d
 
-	measure _Nascimentos = SUM(F_NASCIMENTOS_2022[NASCIMENTOS])
+	measure _Nascimentos = SUM(F_NASCIMENTOS[NASCIMENTOS])
 		formatString: 0
 		lineageTag: 331497b1-80bc-4cf5-b53d-86f531b13d7e
 
