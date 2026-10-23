@@ -4,26 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 53,
+        "x": 2840,
         "y": 0
       },
       "nodes": [
         {
           "location": {
-            "x": 568,
-            "y": 0
-          },
-          "nodeIndex": "F_ESGOTO_2022",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 852,
-            "y": 24
+            "x": 3692,
+            "y": 62
           },
           "nodeIndex": "D_MUNICIPIOS_2022",
           "size": {
@@ -34,8 +22,8 @@
         },
         {
           "location": {
-            "x": 1136,
-            "y": 60
+            "x": 3976,
+            "y": 98
           },
           "nodeIndex": "MEDIDAS",
           "nodeLineageTag": "175a0994-9875-4f4a-9847-fd25568e6949",
@@ -47,8 +35,8 @@
         },
         {
           "location": {
-            "x": 0,
-            "y": 36
+            "x": 2840,
+            "y": 74
           },
           "nodeIndex": "F_NASCIMENTOS",
           "size": {
@@ -59,12 +47,179 @@
         },
         {
           "location": {
-            "x": 284,
-            "y": 36
+            "x": 3124,
+            "y": 74
           },
           "nodeIndex": "F_OBITOS",
           "size": {
             "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 62
+          },
+          "nodeIndex": "F_NASCIMENTOS_2018",
+          "nodeLineageTag": "463655fa-f72a-4ab3-8913-cde3e149988b",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 62
+          },
+          "nodeIndex": "F_NASCIMENTOS_2019",
+          "nodeLineageTag": "0b0f6b62-ff7b-40cf-a4e4-949667b790e2",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 62
+          },
+          "nodeIndex": "F_NASCIMENTOS_2020",
+          "nodeLineageTag": "80e279b0-415f-4b17-81d3-29e63195ced1",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 62
+          },
+          "nodeIndex": "F_NASCIMENTOS_2021",
+          "nodeLineageTag": "1b74e397-b753-4134-8f60-9871237eb137",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 62
+          },
+          "nodeIndex": "F_OBITOS_2016",
+          "nodeLineageTag": "7a338813-c7b3-4143-b1c5-3fa24002f45b",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 62
+          },
+          "nodeIndex": "F_OBITOS_2017",
+          "nodeLineageTag": "5f8a5e72-b7df-4351-95f9-313168fdbd74",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 62
+          },
+          "nodeIndex": "F_OBITOS_2018",
+          "nodeLineageTag": "aac4bbd8-abee-4056-95d0-d73c58f52a0a",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 62
+          },
+          "nodeIndex": "F_OBITOS_2019",
+          "nodeLineageTag": "07ff00f1-361c-408f-a4e2-69222262737d",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2272,
+            "y": 62
+          },
+          "nodeIndex": "F_OBITOS_2020",
+          "nodeLineageTag": "7fe482c1-595c-4903-8489-2498141a3637",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2556,
+            "y": 62
+          },
+          "nodeIndex": "F_OBITOS_2021",
+          "nodeLineageTag": "d09dedba-d1ce-49af-9a48-08e9b1e55fab",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4260,
+            "y": 50
+          },
+          "nodeIndex": "dCalendario",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4544,
+            "y": 0
+          },
+          "nodeIndex": "F_ESGOTO_2013-2021",
+          "nodeLineageTag": "55d555ca-5549-421e-82de-4476e94d8d25",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3408,
+            "y": 38
+          },
+          "nodeIndex": "F_ESGOTO",
+          "size": {
+            "height": 224,
             "width": 234
           },
           "zIndex": 0

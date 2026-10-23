@@ -36,6 +36,13 @@ table F_OBITOS
 
 		annotation SummarizationSetBy = Automatic
 
+	column Data = DATE(F_OBITOS[ANO],1,1)
+		formatString: General Date
+		lineageTag: ca8f9ded-ebe4-44b3-ad2e-808b03d38f67
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition F_OBITOS = m
 		mode: import
 		source =

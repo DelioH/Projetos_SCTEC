@@ -1,0 +1,65 @@
+table dCalendario
+	lineageTag: 846a3531-94f8-4b76-899e-719d70cb5cbb
+
+	column Date
+		formatString: General Date
+		lineageTag: 09f9310c-006f-4d18-9f50-f9d64f098cfe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variação
+			isDefault
+			relationship: 9cce6f90-c133-47c5-8a76-645bd5fef87f
+			defaultHierarchy: LocalDateTable_4219c5fa-679e-4ba2-bbd7-369d01f30eec.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANO
+		formatString: 0
+		lineageTag: 17536a40-a2bb-4d5f-b658-e707863f2bdc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [ANO]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MES_NUMERO
+		formatString: 0
+		lineageTag: 8f21ab9c-7c06-4fb8-8d55-ff9650f8fc1c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MES_NUMERO]
+
+		annotation SummarizationSetBy = Automatic
+
+	column NOME_MES
+		lineageTag: 438f1db0-3432-4ae6-b87a-e044b2ab2507
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [NOME_MES]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANO_MES
+		lineageTag: 3f258f61-2214-42c7-8351-8045e9575d72
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ANO_MES]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(DATE(2016,01,01),DATE(2022,12,31)),
+				    "ANO", YEAR([Date]),
+				    "MES_NUMERO", MONTH([Date]),
+				    "NOME_MES", FORMAT([Date],"MMMM","pt-BR"),
+				    "ANO_MES", FORMAT([Date], "YYYY-MM")
+				)
+
+	annotation PBI_Id = 82df882756784b1d9f9d0f97834d6759
+

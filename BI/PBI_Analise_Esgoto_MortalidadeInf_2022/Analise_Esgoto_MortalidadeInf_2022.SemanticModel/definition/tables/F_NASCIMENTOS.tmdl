@@ -36,6 +36,13 @@ table F_NASCIMENTOS
 
 		annotation SummarizationSetBy = Automatic
 
+	column Data = DATE(F_NASCIMENTOS[ANO],1,1)
+		formatString: General Date
+		lineageTag: e2f9ca1c-96ef-4411-9e01-830af560b8d8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition F_NASCIMENTOS = m
 		mode: import
 		source =

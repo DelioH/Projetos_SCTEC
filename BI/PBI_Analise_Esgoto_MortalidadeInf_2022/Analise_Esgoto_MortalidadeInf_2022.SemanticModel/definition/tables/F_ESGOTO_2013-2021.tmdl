@@ -1,9 +1,9 @@
-table F_ESGOTO_2022
-	lineageTag: 9cae8941-d47f-4037-ae06-3782aff818d5
+table F_ESGOTO_2013-2021
+	lineageTag: 55d555ca-5549-421e-82de-4476e94d8d25
 
 	column 'Código do Município'
 		dataType: string
-		lineageTag: 8bd6aaea-77d8-4eda-9f43-ef7cb4c2cf55
+		lineageTag: 9c5ae15a-293a-4bd9-9177-dd1e834d2215
 		summarizeBy: none
 		sourceColumn: Código do Município
 
@@ -11,7 +11,7 @@ table F_ESGOTO_2022
 
 	column 'Ano de Referência'
 		dataType: string
-		lineageTag: 651ce768-1240-4211-bac8-eac50c8918d5
+		lineageTag: d34e8592-4394-478e-97a5-124f2519a356
 		summarizeBy: none
 		sourceColumn: Ano de Referência
 
@@ -19,7 +19,7 @@ table F_ESGOTO_2022
 
 	column 'Código do Prestador'
 		dataType: string
-		lineageTag: 075112c7-d7ce-4b74-bd27-489974be7827
+		lineageTag: 740082ec-af36-43de-b2ed-9c87ebbc9d42
 		summarizeBy: none
 		sourceColumn: Código do Prestador
 
@@ -27,7 +27,7 @@ table F_ESGOTO_2022
 
 	column Prestador
 		dataType: string
-		lineageTag: 36599e76-6ec5-4203-9c4a-3620873e37a0
+		lineageTag: 9c9882b2-75fe-4e56-8b15-c12d3c32b650
 		summarizeBy: none
 		sourceColumn: Prestador
 
@@ -35,7 +35,7 @@ table F_ESGOTO_2022
 
 	column 'Sigla do Prestador'
 		dataType: string
-		lineageTag: c3949f8f-fe6c-47e3-9ec8-4321a1303e70
+		lineageTag: 0c8b7f6d-007f-4237-81d0-8328d9a8e9a6
 		summarizeBy: none
 		sourceColumn: Sigla do Prestador
 
@@ -43,7 +43,7 @@ table F_ESGOTO_2022
 
 	column Abrangência
 		dataType: string
-		lineageTag: 47ea2b0c-c24f-408d-a6d8-6ec61ed4cbd3
+		lineageTag: 50b6a8e2-fd6a-43ef-8868-4bd581c8ea0c
 		summarizeBy: none
 		sourceColumn: Abrangência
 
@@ -51,7 +51,7 @@ table F_ESGOTO_2022
 
 	column 'Tipo de serviço'
 		dataType: string
-		lineageTag: 5443838f-e8dc-4f01-97a2-bb3e555e8187
+		lineageTag: 96a227fa-c41d-421d-8423-67f6452e0342
 		summarizeBy: none
 		sourceColumn: Tipo de serviço
 
@@ -59,7 +59,7 @@ table F_ESGOTO_2022
 
 	column 'Natureza jurídica'
 		dataType: string
-		lineageTag: 08b0bb47-50eb-4d62-aa36-53c381ebb310
+		lineageTag: a38f6080-a5a7-4881-88d6-c7f396225adb
 		summarizeBy: none
 		sourceColumn: Natureza jurídica
 
@@ -67,7 +67,7 @@ table F_ESGOTO_2022
 
 	column 'AG010 - Volume de água consumido'
 		dataType: double
-		lineageTag: 630ba937-e0cf-4281-9cfe-06860951e0e1
+		lineageTag: 86721852-da30-448d-ad87-41adbae15a30
 		summarizeBy: sum
 		sourceColumn: AG010 - Volume de água consumido
 
@@ -77,7 +77,7 @@ table F_ESGOTO_2022
 
 	column 'AG019 - Volume de água tratada exportado'
 		dataType: double
-		lineageTag: 5da3c353-afa6-431e-9c12-da0fce7b4bac
+		lineageTag: ca026e0b-611b-4598-8eb0-6ec8c663478d
 		summarizeBy: sum
 		sourceColumn: AG019 - Volume de água tratada exportado
 
@@ -87,7 +87,7 @@ table F_ESGOTO_2022
 
 	column 'ES005 - Volume de esgotos coletado'
 		dataType: double
-		lineageTag: b2c8904e-2b5a-4a3c-ad62-dba2706b7452
+		lineageTag: feea1704-d246-4fd3-9bc6-a25ce8468a01
 		summarizeBy: sum
 		sourceColumn: ES005 - Volume de esgotos coletado
 
@@ -97,7 +97,7 @@ table F_ESGOTO_2022
 
 	column 'IN015 - Índice de coleta de esgoto'
 		dataType: double
-		lineageTag: e86dcac7-eb46-4f09-b6f7-12af4049fe66
+		lineageTag: e900e313-a9ca-4a34-abeb-b372dbf2314a
 		summarizeBy: sum
 		sourceColumn: IN015 - Índice de coleta de esgoto
 
@@ -105,28 +105,21 @@ table F_ESGOTO_2022
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	column Column15
-		dataType: string
-		lineageTag: 36a83722-aafa-450b-8f53-1da657b5f470
-		summarizeBy: none
-		sourceColumn: Column15
-
-		annotation SummarizationSetBy = Automatic
-
-	partition F_ESGOTO_2022 = m
+	partition F_ESGOTO_2013-2021 = m
 		mode: import
 		source =
 				let
-				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Agua_Esgoto_2022.xlsx"), null, true),
-				    DADOS_ESGOTO_2022_Sheet = Fonte{[Item="DADOS_ESGOTO_2022",Kind="Sheet"]}[Data],
+				    Fonte = Excel.Workbook(File.Contents("D:\Estudos\Dados\Projetos\Modulo2 - ProjetoFinal\Dados\Agua_Esgoto_Desagregado-2013-2021.xlsx"), null, true),
+				    DADOS_ESGOTO_2022_Sheet = Fonte{[Item="DADOS_ESGOTO",Kind="Sheet"]}[Data],
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(DADOS_ESGOTO_2022_Sheet, [PromoteAllScalars=true]),
 				    #"Colunas Removidas" = Table.RemoveColumns(#"Cabeçalhos Promovidos",{"Município", "Estado"}),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Removidas",{{"Código do Prestador", type text}, {"Ano de Referência", type text}, {"Código do Município", type text}, {"Sigla do Prestador", type text}, {"Abrangência", type text}, {"Tipo de serviço", type text}, {"Natureza jurídica", type text}, {"AG010 - Volume de água consumido", type number}, {"AG019 - Volume de água tratada exportado", type number}, {"ES005 - Volume de esgotos coletado", type number}, {"IN015 - Índice de coleta de esgoto", type number}, {"Prestador", type text}}),
-				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado",null,0,Replacer.ReplaceValue,{"IN015 - Índice de coleta de esgoto"})
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado",null,0,Replacer.ReplaceValue,{"IN015 - Índice de coleta de esgoto"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Valor Substituído", each ([Ano de Referência] <> "---"))
 				in
-				    #"Valor Substituído"
-
-	annotation PBI_ResultType = Table
+				    #"Linhas Filtradas"
 
 	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
 

@@ -1,5 +1,5 @@
 relationship 385a553d-9ee8-b3a7-ae35-026825d01541
-	fromColumn: F_ESGOTO_2022.'Código do Município'
+	fromColumn: F_ESGOTO.'Código do Município'
 	toColumn: D_MUNICIPIOS_2022.'Código do Município'
 
 relationship 3de72d03-f2c4-02b4-7636-18eb00d896c8
@@ -9,4 +9,22 @@ relationship 3de72d03-f2c4-02b4-7636-18eb00d896c8
 relationship e56495f3-0b64-feca-86bc-bc378a7f5fab
 	fromColumn: F_OBITOS.COD_MUNICIPIO
 	toColumn: D_MUNICIPIOS_2022.'Código do Município'
+
+relationship 9cce6f90-c133-47c5-8a76-645bd5fef87f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Date
+	toColumn: LocalDateTable_4219c5fa-679e-4ba2-bbd7-369d01f30eec.Date
+
+relationship ecff493a-3404-dbc2-6777-72a2c331159e
+	fromColumn: F_NASCIMENTOS.Data
+	toColumn: dCalendario.Date
+
+relationship f88349ac-1db4-1c83-d5f9-c94ce7c70100
+	fromColumn: F_ESGOTO.Data
+	toColumn: dCalendario.Date
+
+relationship cf745ab0-597c-bb9f-1bec-9f913622a4c5
+	isActive: false
+	fromColumn: F_OBITOS.Data
+	toColumn: dCalendario.Date
 
