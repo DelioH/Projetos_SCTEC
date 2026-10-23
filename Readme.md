@@ -31,7 +31,11 @@ AG019 - Volume de água tratada exportado (1.000 m3/ano)
 ES005 - Volume de esgotos coletado (1.000 m3/ano)	
 IN015 - Índice de coleta de esgoto (%)
 
-Por precaução foi refeito o calculo
+Validar qual indicador utilizar
+![alt text](image-10.png)
+
+Sanemaneto basico x coleta de esgoto
+![alt text](image-9.png)
 
 Foram verificados 2 registros em branco e 4 com 0 (indicador IN015)
 Foi identificado que os registros em branco corrrespondiam 
